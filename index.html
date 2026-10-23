@@ -519,7 +519,7 @@
 'use strict';
 
 /* ═══ CONFIG · Bacani · 7 – 16 Nov 2026 ═══ */
-var FX_RATE = 157.16; // 1 USD = 157.16 JPY (planning rate from the canvas)
+var FX_RATE = 157.00; // 1 USD = 157 JPY (planning rate from the canvas)
 
 /* ═══ TRIP DATA · Bacani · Tokyo ═══
    Status legend matches the canvas: confirmed · requested · suggestion · self-booked · walk-in */
@@ -533,17 +533,15 @@ var TRIP = {
         { time:'17:55', type:'flight', badge:'Arrival', badgeType:'self-booked', title:'Arrive Tokyo · 17:55', sub:'Private transfer into the city', loc:'Tokyo', addr:'Tokyo', q:'Haneda Airport Tokyo', notes:'Landing at 17:55, with a private transfer into the city. Draw a little yen on arrival — a few counters and taxis still prefer cash.', alert:null }
       ] },
     { date:'2026-11-08', dayNum:2, weekday:'Sunday, 8 November', city:'Tokyo', cityClass:'', hotel:null, hq:null, hosted:false,
-      notes:'First full day in Tokyo. Sugita is pencilled in for the evening — a top priority, and being pursued.',
-      stops:[
-        { time:'Evening', type:'restaurant', badge:'Priority', badgeType:'requested', title:'Sushi Sugita · 鮨 すぎた', sub:'Dinner · Edomae sushi · Nihonbashi', loc:'Sushi Sugita, Tokyo', addr:'Nihonbashi, Tokyo', q:'Sushi Sugita Tokyo', notes:'One of the most revered Edomae counters in Tokyo — regulars and introductions only, and one of your two top outstanding targets. Pencilled here for the Sunday evening while we make the approach on your behalf.', alert:'Top priority · being pursued' }
-      ] },
+      notes:'First full day in Tokyo, and the evening is open. Sugita is no longer pencilled here — it stays a top target, and we will place it on whichever evening we can secure.',
+      stops:[] },
     { date:'2026-11-09', dayNum:3, weekday:'Monday, 9 November', city:'Tokyo', cityClass:'', hotel:null, hq:null, hosted:false,
       notes:'The first confirmed anchor of the trip — a private buyout of the Meino counter at midday.',
       stops:[
         { time:'12:00', type:'restaurant', badge:'Confirmed', badgeType:'confirmed', title:'Sushi Meino · 貸切', sub:'Lunch · Edomae sushi · buyout · 12:00', loc:'Sushi Meino, Tokyo', addr:'Tokyo', q:'Sushi Meino Tokyo', notes:'Mei-san works the small counter himself, shaping a precise Edomae progression piece by piece. The room is held privately for your party — an intimate lunch rather than a grand one. Confirmed.', alert:'Confirmed · 12:00 · private buyout · no fragrance at the counter' }
       ] },
     { date:'2026-11-10', dayNum:4, weekday:'Tuesday, 10 November', city:'Tokyo', cityClass:'', hotel:null, hq:null, hosted:false,
-      notes:'An open day between the two buyouts, and the first natural home for one of the outstanding priorities — Ikkou or Arai. We are working on both; say the word and we will place one here. The Discover tab has sightseeing, food and shopping for the rest of the day.',
+      notes:'An open day between the two buyouts — a natural home for Sugita, Ikkou or Arai once one of them is secured. The Discover tab has sightseeing, food and shopping for the rest of the day.',
       stops:[] },
     { date:'2026-11-11', dayNum:5, weekday:'Wednesday, 11 November', city:'Tokyo', cityClass:'', hotel:null, hq:null, hosted:false,
       notes:'The second confirmed buyout — tempura, taken slowly at the counter.',
@@ -551,10 +549,8 @@ var TRIP = {
         { time:'12:00', type:'restaurant', badge:'Confirmed', badgeType:'confirmed', title:'Tempura Naruse · 貸切', sub:'Lunch · tempura · buyout · 12:00', loc:'Tempura Naruse', addr:'Tokyo', q:'Tempura Naruse', notes:'A tempura counter taken privately for your party at midday — piece by piece, lighter and more precise than tempura is usually given credit for. Confirmed.', alert:'Confirmed · 12:00 · private buyout' }
       ] },
     { date:'2026-11-12', dayNum:6, weekday:'Thursday, 12 November', city:'Tokyo', cityClass:'', hotel:null, hq:null, hosted:false,
-      notes:'A late yakitori dinner pencilled in — the counter held privately for the two of you.',
-      stops:[
-        { time:'20:30', type:'restaurant', badge:'Suggestion', badgeType:'suggestion', title:'Yakitori Hikita · 貸切', sub:'Dinner · yakitori · buyout · 2 seats · 20:30', loc:'Yakitori Hikita, Tokyo', addr:'Tokyo', q:'Yakitori Hikita Tokyo', notes:'A late, unhurried yakitori dinner — skewer by skewer at the counter, with the room held privately for the two of you at 20:30. Pencilled on the canvas; to be requested on your word.', alert:'Suggestion · 20:30 · buyout · 2 seats' }
-      ] },
+      notes:'Open. The Hikita yakitori evening has come off the canvas; this is the other strong slot for one of the outstanding sushi targets.',
+      stops:[] },
     { date:'2026-11-13', dayNum:7, weekday:'Friday, 13 November', city:'Tokyo', cityClass:'', hotel:null, hq:null, hosted:false,
       notes:'The fullest day of the trip: an early VIP walk through the fish market, then the Saito counter at noon.',
       stops:[
@@ -562,12 +558,12 @@ var TRIP = {
         { time:'12:00', type:'restaurant', badge:'Confirmed', badgeType:'confirmed', title:'Sushi Saito · 鮨 さいとう', sub:'Lunch · Edomae sushi · 3★ · 12:00', loc:'Sushi Saito, Tokyo', addr:'Akasaka, Minato City, Tokyo', q:'Sushi Saito Tokyo', notes:'The three-star Akasaka counter — for many the single hardest reservation in Japan, and the natural high point of the week. Confirmed at 12:00. Please arrive a few minutes early and wear no fragrance.', alert:'Confirmed · 12:00 · no fragrance at the counter' }
       ] },
     { date:'2026-11-14', dayNum:8, weekday:'Saturday, 14 November', city:'Tokyo', cityClass:'', hotel:null, hq:null, hosted:false,
-      notes:'A kaiseki evening pencilled in — a change of register after a week of counters.',
+      notes:'A confirmed kaiseki evening — a change of register after a week of counters, and the last booked anchor of the trip.',
       stops:[
-        { time:'Evening', type:'restaurant', badge:'Suggestion', badgeType:'suggestion', title:'Kaiseki Suetomi', sub:'Dinner · kaiseki', loc:'Suetomi, Tokyo', addr:'Tokyo', q:'Kaiseki Suetomi Tokyo', notes:'A full kaiseki progression to close the week — seasonal, quiet and paced quite differently from the sushi counters. Pencilled on the canvas; to be requested on your word.', alert:null }
+        { time:'20:30', type:'restaurant', badge:'Confirmed', badgeType:'confirmed', title:'Kaiseki Suetomi · 懐石 末冨', sub:'Dinner · kaiseki · 20:30', loc:'Suetomi, Tokyo', addr:'Tokyo', q:'Kaiseki Suetomi Tokyo', notes:'A full kaiseki progression to close the week — seasonal, quiet and paced quite differently from the sushi counters. Confirmed for 20:30. Food is settled on the night; the house estimate is around ¥100,000 per person.', alert:'Confirmed · 20:30 · food est. ¥100,000 pp' }
       ] },
     { date:'2026-11-15', dayNum:9, weekday:'Sunday, 15 November', city:'Tokyo', cityClass:'', hotel:null, hq:null, hosted:false,
-      notes:'The last full day, still open — the second slot for Ikkou or Arai, or for a crab or seasonal kaiseki evening if that appeals. Otherwise a good day for Ginza, a depachika and one more walk-in bowl of ramen.',
+      notes:'The last full day, still open — another slot for Sugita, Ikkou or Arai, or for a crab evening if that appeals. Otherwise a good day for Ginza, a depachika and one more walk-in bowl of ramen.',
       stops:[] },
     { date:'2026-11-16', dayNum:10, weekday:'Monday, 16 November', city:'Tokyo', cityClass:'', hotel:null, hq:null, hosted:false,
       notes:'A final morning in the city before the 18:20 departure.',
@@ -580,12 +576,13 @@ var TRIP = {
 /* ═══ WISH LIST ═══ */
 var WL_CONFIRMED = [
   { name:'Sushi Saito · 鮨 さいとう', style:'Top priority · secured · 3★ · Fri 13 Nov · 12:00 · Akasaka, Tokyo', q:'Sushi Saito Tokyo' },
-  { name:'VIP Fish Market Tour', style:'Toyosu · private guided visit · Fri 13 Nov · early morning, ahead of Saito', q:'Toyosu Market Tokyo' },
+  { name:'Toyosu Market · VIP visit', style:'Private guided market visit · Fri 13 Nov · early morning, ahead of Saito', q:'Toyosu Market Tokyo' },
   { name:'Sushi Meino · 貸切', style:'Edomae sushi · Mon 9 Nov · 12:00 · private buyout · Tokyo', q:'Sushi Meino Tokyo' },
-  { name:'Tempura Naruse · 貸切', style:'Tempura · Wed 11 Nov · 12:00 · private buyout', q:'Tempura Naruse' }
+  { name:'Tempura Naruse · 貸切', style:'Tempura · Wed 11 Nov · 12:00 · private buyout', q:'Tempura Naruse' },
+  { name:'Kaiseki Suetomi · 懐石 末冨', style:'Kaiseki · Sat 14 Nov · 20:30 · food est. ¥100,000 pp', q:'Kaiseki Suetomi Tokyo' }
 ];
 var WL_REQUESTED = [
-  { name:'Sushi Sugita', style:'Top priority · outstanding · Edomae sushi · Nihonbashi · pencilled Sun 8 Nov', q:'Sushi Sugita Tokyo' },
+  { name:'Sushi Sugita', style:'Top priority · outstanding · Edomae sushi · Nihonbashi · evening still to be placed', q:'Sushi Sugita Tokyo' },
   { name:'Sushi Ikkou', style:'Top priority · outstanding · sushi · Tokyo · date open', q:'Sushi Ikkou Tokyo' },
   { name:'Sushi Arai', style:'Top priority · sushi · Ginza · chef Yuichi Arai · date open', q:'Sushi Arai Ginza Tokyo' }
 ];
@@ -593,11 +590,10 @@ var WL_SUGGESTIONS = [
   { name:'Amamoto · 天本', style:'Also discussed · sushi · 2★ · Higashi-Azabu · luxurious Edomae', q:'Sushi Amamoto Higashi-Azabu Tokyo' },
   { name:'Snow crab · seasonal kaiseki', style:'Also discussed · a top crab or seasonal kaiseki experience, ideally in Tokyo · mid-November is early in the season', q:'Kani kaiseki Tokyo' },
   { name:'Sushi Mekumi · めくみ', style:'Previously discussed · sushi & crab · Nonoichi, near Kanazawa · would need a west-coast overnight', q:'Sushi Mekumi Nonoichi Kanazawa' },
-  { name:'Yakitori Hikita · 貸切', style:'From the canvas · yakitori · Thu 12 Nov · 20:30 · buyout · 2 seats', q:'Yakitori Hikita Tokyo' },
-  { name:'Kaiseki Suetomi', style:'From the canvas · kaiseki · Sat 14 Nov · dinner · Tokyo', q:'Kaiseki Suetomi Tokyo' }
+  { name:'Yakitori Hikita', style:'Previously pencilled · yakitori · off the canvas for now · can be revived for an open evening', q:'Yakitori Hikita Tokyo' }
 ];
 var WL_LONGTERM = [
-  { name:'Tue 10 Nov & Sun 15 Nov · open days', style:'Two days still to build — the natural homes for Ikkou, Arai, or a crab evening', q:'Tokyo' }
+  { name:'8, 10, 12 & 15 Nov · open evenings', style:'Four evenings still to build — the slots for Sugita, Ikkou, Arai or a crab dinner', q:'Tokyo' }
 ];
 var WL_TOKYO_IDEAS = [
   { name:'Sawada', style:'Sushi · 2★ · Ginza · tiny, intimate counter', q:'Sushi Sawada Ginza Tokyo' },
@@ -767,10 +763,9 @@ function renderItinerary(){
     +'<span class="banner-chip confirmed">🍣 Sushi Meino · 貸切 · Confirmed</span>'
     +'<span class="banner-chip confirmed">🍤 Tempura Naruse · 貸切 · Confirmed</span>'
     +'<span class="banner-chip confirmed">🍣 Sushi Saito · 3★ · Confirmed</span>'
-    +'<span class="banner-chip confirmed">🐟 VIP Fish Market Tour · Confirmed</span>'
-    +'<span class="banner-chip">🍣 Sushi Sugita · suggestion</span>'
-    +'<span class="banner-chip">🍢 Yakitori Hikita · suggestion</span>'
-    +'<span class="banner-chip">🍱 Kaiseki Suetomi · suggestion</span>'
+    +'<span class="banner-chip confirmed">🐟 Toyosu Market · Confirmed</span>'
+    +'<span class="banner-chip confirmed">🍱 Kaiseki Suetomi · Confirmed</span>'
+    +'<span class="banner-chip">🍣 Sugita · Ikkou · Arai — in progress</span>'
     +'</div></div>'
     +'<div class="booking-legend">'
     +'<span class="bl-item"><span class="bl-dot confirmed"></span>Confirmed</span>'
@@ -1174,8 +1169,8 @@ window.addEventListener('resize',fixHeaderOffset);
 (function(){
 "use strict";
 
-const ENC_GUEST = "DeH8dYgwhFT0m7LwX1pp2+gsT62vyM8H4KaD1NyV7BiQSXHh/phsBA7EJdOXM7WU+9zcptFnEhDKlocRcFpF6JPSlvaJbzKFrtH6AHzcHKs+nAHG3g63nTgPOo0tzZGrYjW0vSHpPfqlH/hE6tdyQ0eSXFz9EcDGrGoGL/DteYrCjM+Kfxo6CiWgrdrgPCJE4jvrGUZ7kuzldwPw2ZvNdeoloWCWVkwhdWXo0ifgbg91s2eyuaJzybn0NxNTGvt/8x5Qb2VhgLA/VCs5rP/51+xoWG5XgFgAZ7xrVc54dGgENMts8u7+QXQ3HFgcoVvRXeYAC+N84PReqPKLh6g894AZ9sassRkSJ7iL+KNG7z3WJNoP7W6QQ3srGKPUc9E2KF82jr+u65KzRHtMTtFAdWWz9IELqPcKDvsbhe48gZE47asXjk99edwUDElxfBXFOTM4+NF/46voPIGO/gppOQ6lAjud6zt0AJx3jrDwwGuFceX0TYHBwJdLPXLGKp4b1tYW5ZmFr5TnnF8xDUxv9Mqy37OLfkBHBoKjODcIW/D7OBOYhEyzFbYQ9E7l2zd1oGmZu/cFfqEkm2Q/3VOk9XMP5vKikXH+TCPCc8Rzq9vbNA93irioNjte4fA81j+N6kskw31oxj5r/EQGlR+59Pr3HCauPLoJJv1QwU7f0524aMMj0mpHv+LH59i9EWs5jDLza41LxD38E7ORM2nKCGYoV+odAV+OPGHmTVUy68zA1cifuE2RcnpC0347hWyVFC2cNziQIrJi7FgPiIRL6zvXvFN3hT0FAZiS856a+LX1+b1SJu4iTys/UP2b5O8ftn0u3j8fzROXgHitakxv3zQ+eUMT5NxjJzGNmfrRRU8SRlgwpRZktrLxDx/Q9qZ0QagxR/rROjC3zhZZ+pBd0D4K8wQLDl63Ah3H6sHv+NzxECA1WXp9Ya9RD/xzbp1Ci/Q4U0VIoDyaAc4uHa/p/Nah+W5iTITG6m8i5KjlWjBGmxRfbsauU3KXcf5JWNHdu8CXNOZqUk68JrrNWwgzgzQzxCqoaIVgI8GHOkgCxHmnRNd+EiPYd8MVOQiUW1mskBd+3RuPbIXRWscpkJcOl1j8j/hP1eqXsnSzzzsp/cJr7i2GKdA4psGY1Zz6/z8eUJfzgdZRuTvqjwvIfd+ZZ18ATieANCuawcmfxSxUMlSE9ey+YBv1CCjNju6c2f3wIewh8r1IK4YMyiiDFw1EoHnx8CwhfWLfEI1MSKN0P60E9WDMl3bg3sv3SpbTF3ZsxRmyFYFXLvY0v3MSkjCw7BVwCl2glp9P3/sIcFla/Fnzk6qneUvkqj8aRytWM7UEksIq9DZRJ5NDvWfRvL+Bae16ej6fklRaZcnL";
-const ENC_INTERNAL = "wrVqx7QbxIAqfAZ8uXHgx3ePU9sSa030j1KWy3dYo/QLxLHMg+vAXG7hF+IrPFuRfPah86j7YZTHjDSw2G5mXTK3iDrkqzyr1zgwu3qRB4eQbEG8P1hauUV5v/kEv6ST4WTqvnbgYZyyycvRWycxhuQ/VdNZJrAf3MAdMuwCPOELIvbW8yvICXiLdFc1y/baOtVYkzWog/fJ0rnlAqYUsRA41soAFTwihEf9nVmO5GXg3NO4yG8gxrMR4ZsCmngfztZNSPAGpatc2v2jsyrnQr/V/qY3fUFzQSUp8v6XEIQszUy3pix6lzhYZNpxPFpzafzzMHEWVPLdQKBpgzKJtq1zfkmI60EfzOW1Se4VHkbfKB4Ht3T5IUNKCQCeK4WgDyIpi+jetH4E3uyGvgM1yqq+gL7qn2IMJuqaGwGUExpEKPaok2WXrXo25ePnsYgezG7jz/QWSJBrsUkv7dW7EuEXLUqY0jZQPGZ6yH9qeu1PgLd6JQQxLKVEcQkPOsntNnr8MZMTvVQMUjckofuZ6s78ZE2FzS8psA/zDpw0gThZaTU9I0E6CBXUwFleH2g6+nqtc+oezGztHtxSU66YIMJYNpk2GLPjcQCNOLwM1d2nk/pnUWBnONEPjiGrQb2jhT5rBS7O++vg8xjxrMbCcJOabxOjq4O0FJiSwBdNQ9P3ApjlVurss00iI28fpGQT+ZEDU1kiGA0ykqV980pbwjDB3X17rllh+M38UnDN92TodlpGfQahsHdezFQ2r02XAIAx3U3c4zf6M6LL3LGAwa54aMCJlG2ON0JXzrtzRGjnWybgNeGTaxxApPth6VgLtXLFtqPCL/g7DR5gwVxKCM4BzlyUwhGtZCeRJpXoQiGlUtOVw5l/FvcRjiGibexnhF3gWoW0AQ4HonRbjvtFyop5IGnVBpMmDZ8OhjOeKnfuxsXGjVTSp50C2IwjT3vkGPStnQhTLEugDxD9fzTI9ooi7sqRFJMZapfP6bWUQH9khoLiY5MQeQAxVQTg6KrftG/8RQbs2R2KGhXaxl72fTjZDB20pIyp8H2e6UF6aPt4D1vybScaocXnMm6PLFGuU6nJ5qvN9H63trRFBF7G1srJOWSC1CpBrRifArINJIKwdCR89Cvia31kePaU2+cvzR84D/OgbzaDXpHAYu90Ab2hk59xD7q5o4cXZZX+Q7ZDxboDhqgbQxVQV4OMA4aS8hF2LsenhCD4Su+l+Di07T4JIwc4VPrlusx1yRnv8TXx9z9O+pQRzzmpeK2EqpRJtzsbOpOYmnapDh9FKrHhyIxgMGPCzTCMkYLXOENCN8jj5WNjgh5B6Guht/HXZuPhe5IHwXl5VkRFm0EqrwUWMGkDgxl1FC284lZpP631ocr7yg3evXSd0BI0lwzO9VaGgGuw2AuYWyWISY6Xf/oc";
+const ENC_GUEST = "ut99XwVRhz/LKaxS3NzC1+S0Re9yVxrUwBrr8ET2APKBR1PQPcxZPFj0+h6jKxHNwOvo3KUb1cUEXmvQT0vR4cLjQOZSHYhN8iGoBKzG75ka2M0+BsKJPTpMyDjXqIV6bis+FVnOyxQLEnAy3oSpTZ3jZ0Qf91RdwRwt97E1QGp2tnIY+s0Qw1ep834VLeC4/Akv0B+YjLn5oKeCAx/K+zs/wGWLwTsTnv6x6spQeRaH8pY1X4LYGw7OsyGIdFCjYwZoSSmWyHS/jrd33fg7oE1bdrIX/QV75XXxOTJinZyZoqgNveSeOJzE/SCYv+KPfUL4ffZkfhL8osgbbED2H/aFSgBYPrfOUm+BpLp4q+z9+Bb35uf2YWi22CgBJbQNd9CZqO99W+dHH+i8j1I03sVvlp7x/clAvDqyi2OtE1spbrRmGlp1JagpWuBfXmJ29m3QDEpx8hzyp87OdfdNy5l9A4tBL6B3iRsGqJIXWUB2FlXqB4rWfyppFss+kvRi6P0qbM1E+tTumd7OgMc/H2mdTlAsz3Viwrx2xuL2YofNKezxpGzcWYSMpIWXaJ8UhobjKgQpu/xRCKwQhsrev9mgnh3G8RpUm38QrCr9FMSjYCj6z1R/zoDZffD7/8DVfPlD87b3gGcgooaN6uA5mqu5NDGhE1NeZF2aF4VsJczPWDqW7ZPCU1J1+fsOVf3HHLw3xktzbp6gEW6LK7ZgFScFIXHlO9z3fObWOpuvzQc8zPCnfeWxOPqRpJycnXCYnpjFQ3n2fmLQ/DW9c1Ftgq6B163ewlVm0k6aa7q/wjpufAs+kFM1KCxU/JylcO2lcLC4P9pXkeJzkxyUb3u4vuwYF4nCGXjVMd2IShGixuHG0NxjVlQkHgNAfSK8cW6e9cHUHpDy3Kmp5v5pYe4x6/D5EYV7Hyu6FrF6XOVxNeqxC1Ai5akdM8Pk3Qa1yhil1OqAw4dM8XDwfgOcUU0h5AO0KSCkpm/Yo21ydb+rGzZZlpaXifP42x2H+nRi8TtZyyT+S811I53mGhoff++MKVU/j3LsV0Hrc7fX1UsACJ+fD9ueF5hKgCBSNMF3500wsJb8fu8BZLY8zPgzpnuLrnKekuIisXtVuFepCPmwRQx/yj3U+rgxxOzv2yBVvXLTcHuEj5ZiONV+fLje9u7kImTq4fMnT3gELc4z9Jlx6S4GtMXFPuX6y+E1JWE6jZbfTtnC81xx4jagz8nR2PZR3sUDecFRQpJaPQSGph1MTIdkTOpc2XvRNnrHVvoU3RzITc4g7u0mKLTHxcx6dSCrQIAmoN98vfwx1zX4qwArSZY21qszioZwJzm32gNcS8Dbtx7uTKkGNLAb0JppoZtgCEIz7SNZ3F9r2vS+zi4NHImGsljinDbf2yNgDrpoCJvF4BMxT32a5MCVQE49/7OQRuq3Fjxdd8XPuMZETY6+wkf8ZKryAK7h06XOvD1LCO7BHXpjW/XLtrazEl8CklCDqKT18zE5+6YAhLq/w+C3rP6mfZYsMKJwZFLtw7hTrRmtfwa6AVrA+r+S3QAUTfk=";
+const ENC_INTERNAL = "knYR/5Tn/Kzh3PamQlnvGSBml9FcrRo+SHnzWhiKQo012yU+ImORxFaIekVl2jlkx87TOfxKxM2A16Yp5h6klH5qg9amkDQQUAGKgqJvhQtsJ3kDe/LpWMIEjUQHqUg5VFmEO2Mm8q42lcGUmDrNHus5sE8NgzJHWcj7WMzn7ZDb+SOrD5WAvq8mITPD3PiBt9ye+k7M8Y2XGxi5CplJNox+k4ICLcXI+JXyzX536iv5zW3DY9DUA4iy6kDu5uvibuDyR+/gKi5kFs9juqaJxREN50OKHJiGCsGJkbM3FgSbP7wtde/MoGrndDDYiCXlVIrvkXC9yTi31A0/+GVnNrifgZYpgGKrOvOIKxX/rYWZ0SAlgBnEXMj5faHXItXUOc095Q7u6KZofstAd6l65bykA6DnAX+Eom5bgUsMvqYvz2mguUvEtN7M2qVaa/5jJ6iEAguc7Ff6M4NIMI20oacNGAkitEcj/ZIel0C3q4oBLcoaZoXmzJ+bBQ03Rk0Lh/iLTpsmKr/8+RMM20iDVlR3ReawclC5Z4wwXnJqS+D0d2WcVeTAoxH2KHJvPH0ZfnFqMkozl7ppbgrIzi27sRVZELf37EhqOaGVWiphG0JHH+YOUw9g5b5qH7K1JOb7VP60bfKwz12TeOltXarvbLBRpT20qvAY1HdVlI70AUkLcbDzesyHh++Mv1yMQlkRzJk29SIM1/Vw/OVDJaAaxrCp8QkDftbJf9MsGzWojaIUhw9JO88NiFdtz0TsMCvD6aTJE2FrIYcmjO5xwXFZf2T44A6lR7bBrWm79C/KKCEyKKE84A3qC9tdw3FDC5tBEhSvpyvjdnilPWGAPfD1jaVqdvnrGH6R+jaaCwkUnZLoaUXXsGgAQZOp0RAOSAvVFbVTlVYlAW0n8r2wnVBdvSNNgPqtCpkk69MesSZGKKbRD0xUSLli4+4a/YKgautV87vNcyOtQe7wLGfkHl4hgtoEYgygiJMrGJVxcolckHLdzCQ7zxu8lUuN31XNOefIVwPGGZcnE1ED/ThdpRGrSPRvCLz68cPhk4kszMlNj3mzldzD74sgdWPB39MCQ9ZZPW6zCKqxjMHcZ6tHyzveZnUPJzdANfHphLaGMIYnSqNlzVK4esfzMCvKHmu7SMFhDiS5XwWYNlstiYUEoOtuorCGG3Oxr/LwJnsGIUtXMwycZXfDNZHccM0WUSyTbc15eqTx7dbmrxkBMdFtgmobkoTBTQuNGG6OY1HjpDJNn12Q7tCFjWlEurOUqBwJ53ZWgL0QNo4AImLCIAP+PGbW+pD9butkygtDiSLute2dwT+SpqZsptiK+TS0ISQjmzNFyj1sSGf2MK2kz0cmpZRKuKqYp3e95SiCWVXv6Eg+3Yb7G8+KQr8qpblSK6+NRJRHgHiWicUdFABoYxNBTi7Fs9GXa9M4YUlZue8uruUAXZGWjCWBR+cmRJO1TvWyYdrnV62sYGCQpzBXjQgWPsOhjlLlnyYt5SoLMk0+7Qts7LHFsueasGewp1oU74nV1KENwgEljVVl+h4JR0ePldg+vuqDuYzsFeE7nYmvKVone11j5aeSYhC11L4S1jTBmBhI9svi5dZPrprr/g0=";
 
 const TIMEOUT_SEC = 120;
 
