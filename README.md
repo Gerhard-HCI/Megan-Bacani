@@ -24,9 +24,9 @@ and the team directly. To re-encrypt after editing figures, open the site with
 | Date | Time | Booking |
 |---|---|---|
 | Mon 9 Nov | 12:00 | Sushi Meino — private buyout |
-| Wed 11 Nov | 12:00 | Tempura Naruse — private buyout |
+| Wed 11 Nov | 12:00 | Tempura Naruse — private buyout, **in Shizuoka** (~1h each way by Shinkansen) |
 | Fri 13 Nov | early | Toyosu Market — VIP guided visit |
-| Fri 13 Nov | 12:00 | Sushi Saito (3★) |
+| Fri 13 Nov | 12:00 | Sushi Saito — Ark Hills South Tower, Roppongi |
 | Sat 14 Nov | 20:30 | Kaiseki Suetomi — food settled on the night, est. ¥100,000 pp |
 
 **Outstanding priorities** — Sugita, Ikkou, Arai. Four evenings still open to place
@@ -39,6 +39,17 @@ need a west-coast overnight); Hikita (pencilled previously, now off the canvas).
 and preferences ahead of the first counter on 9 November.
 
 ## Change log
+
+### 2026-10-24 — restaurant write-ups (`pending`)
+Expanded each confirmed restaurant's itinerary note to ~150 words, researched and
+sourced rather than written from memory. Four factual corrections came out of it:
+
+- **Meino** — chef is Mei Kougo, a woman; the previous note said "Mei-san … himself"
+- **Naruse** — is in Shizuoka, not Tokyo; the 11 Nov lunch is a day trip and travel
+  is not yet arranged
+- **Saito** — left the Michelin Guide in 2019 when it stopped serving the public, so
+  the "3★" label has been dropped; address is Ark Hills South Tower, Roppongi
+- **Suetomi** — Shibuya, six-seat Kiso cypress counter, chef Yasuo Suetomi
 
 ### 2026-10-24 — sync to live canvas (`8945c89`)
 The earlier build came from a stale `.xlsx` export. Rebuilt against the live sheet:
