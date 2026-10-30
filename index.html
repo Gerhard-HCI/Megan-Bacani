@@ -414,6 +414,31 @@
 .con-pay-row .con-btn{flex:1 1 100%;}
 .paybtn-sub{text-align:center;font-size:11px;color:#6E655A;margin-top:7px;}
 .tab-btn .lk{font-size:11px;margin-right:3px;opacity:.85;}
+  
+    /* ── TAXI CARD — shown to the driver (hex only: iOS Safari) ── */
+    .map-btn.tx-btn{background-color:#FFF6E0!important;color:#8A5E12!important;border-color:rgba(176,124,34,.35)!important;font-weight:600}
+    .tx-ov{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(10,15,30,.72);z-index:100000;display:none;align-items:flex-end;justify-content:center}
+    .tx-ov.on{display:flex}
+    .tx-sheet{background-color:#FAF8F4;width:100%;max-width:620px;max-height:92vh;border-radius:22px 22px 0 0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 18px calc(24px + env(safe-area-inset-bottom));animation:txUp .3s cubic-bezier(.16,1,.3,1)}
+    @keyframes txUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+    .tx-grab{width:38px;height:4px;background-color:#C5CBD6;border-radius:99px;margin:0 auto 14px}
+    .tx-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+    .tx-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;font-weight:500;color:#141B2D;line-height:1.2}
+    .tx-title-jp{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;font-size:15px;color:#3A4866;margin-top:3px}
+    .tx-close{width:40px;height:40px;border-radius:50%;flex-shrink:0;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;background-color:#FFFFFF!important;color:#55607A!important;border:1px solid #E2E6EF!important}
+    .tx-card{background-color:#FFFFFF;border-radius:16px;padding:24px 18px;text-align:center;border:1px solid #E2E6EF}
+    .tx-to{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#55607A;margin-bottom:12px}
+    .tx-name{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;font-size:30px;line-height:1.3;color:#000000;font-weight:600;margin-bottom:6px}
+    .tx-name-en{font-size:13px;color:#55607A;margin-bottom:18px}
+    .tx-addr{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;font-size:25px;line-height:1.65;color:#000000;font-weight:600;padding:16px 8px;border-top:2px solid #000000;border-bottom:2px solid #000000;word-break:break-word}
+    .tx-ask{font-family:'Hiragino Mincho ProN','Yu Mincho','Noto Serif JP',serif;font-size:20px;color:#000000;margin-top:18px;line-height:1.5}
+    .tx-ask-en{font-size:12px;color:#55607A;margin-top:5px;font-style:italic}
+    .tx-acts{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+    .tx-act{flex:1 1 30%;min-height:46px;padding:11px 8px;border-radius:10px;font-size:13px;font-weight:600;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid #D6DCE8!important;background-color:#FFFFFF!important;color:#2A3450!important}
+    .tx-act.pri{background-color:#0D2847!important;color:#FFFFFF!important;border-color:#0D2847!important}
+    .tx-act.go{background-color:#FFF6E0!important;color:#8A5E12!important;border-color:rgba(176,124,34,.35)!important}
+    .tx-foot{font-size:11.5px;color:#55607A;text-align:center;margin-top:16px;padding-top:12px;border-top:1px solid #E2E6EF;line-height:1.6}
+    .tx-foot em{color:#7A869E}
   </style>
 </head>
 <body>
@@ -424,7 +449,7 @@
       <span class="hdr-flag">🗾</span>
       <div>
         <div class="hdr-dest">Tokyo · November 2026</div>
-        <div class="hdr-hc">Happy Camper</div>
+        <div class="hdr-hc">Happy Camper · v2</div>
       </div>
     </div>
     <div class="hdr-right">
@@ -479,6 +504,7 @@
 
 <!-- diet sheet omitted: no dietary notes on file -->
 
+<div class="tx-ov" id="tx-ov" onclick="if(event.target===this)closeTaxi()"><div class="tx-sheet" role="dialog" aria-modal="true" aria-label="Show the driver"><div class="tx-grab"></div><div class="tx-head"><div><div class="tx-title">Show the driver</div><div class="tx-title-jp">タクシーの運転手にお見せください</div></div><button type="button" class="tx-close" onclick="closeTaxi()" aria-label="Close">&times;</button></div><div id="tx-body"></div><div class="tx-foot">住所は Google マップの日本語表記のとおりです。<br><em>Address as Google Maps shows it in Japanese.</em></div></div></div>
 <div id="toast"></div>
 
 <div id="console">
@@ -723,6 +749,55 @@ window.toggleDay=function(num){var c=document.getElementById('day-'+num);if(c)c.
 var ICONS={flight:'✈️',transport:'🚄',hotel:'🏨',restaurant:'🍽️',activity:'🎌',market:'🏪',suggestion:'🍽️'};
 
 /* ═══ RENDER · STOP ═══ */
+/* ═══ JAPANESE PLACE DIRECTORY · taxi card ═══
+   addr = address in Japanese as Google Maps shows it to a Japanese user; each entry
+   cross-checked against the Google Places result (postcode + romanised address).
+   TAXI_KEY maps a stop's q string to its entry; a stop can also carry ja:'key' directly. */
+var JA_DIR = {
+  meino:{ name:'鮨 めい乃', en:'Sushi Meino', addr:'〒106-0045 東京都港区麻布十番1-6-1 6F', tel:'' },
+  naruse:{ name:'成生', en:'Tempura Naruse', addr:'〒420-0861 静岡県静岡市葵区丸山町12-2', tel:'+81542957791' },
+  toyosu:{ name:'豊洲市場', en:'Toyosu Market', addr:'〒135-0061 東京都江東区豊洲6-6-1', tel:'' },
+  saito:{ name:'鮨 さいとう', en:'Sushi Saito', addr:'〒106-0032 東京都港区六本木1-4-5 アークヒルズサウスタワー 1F', tel:'+81335894412' },
+  suetomi:{ name:'懐石 末冨', en:'Kaiseki Suetomi', addr:'〒150-0002 東京都渋谷区渋谷2-6-12 ベルデ青山ビル', tel:'' }
+};
+var TAXI_KEY = {
+  'Sushi Meino Azabu Juban Tokyo':'meino',
+  'Itamae Tempura Naruse Shizuoka':'naruse',
+  'Toyosu Market Tokyo':'toyosu',
+  'Sushi Saito Ark Hills Tokyo':'saito',
+  'Kaiseki Suetomi Shibuya Tokyo':'suetomi'
+};
+function taxiKey(s){
+  if(!s||s.type==='flight'||s.status==='suggestion'||s.badgeType==='suggestion')return null;
+  var k=s.ja||TAXI_KEY[s.q];return(k&&JA_DIR[k])?k:null;
+}
+function taxiBtn(k,di,si){
+  return '<button type="button" class="map-btn tx-btn" onclick="showTaxi(\''+k+'\','+di+','+si+')" aria-label="Show the address in Japanese to a taxi driver">🚕 Taxi</button>';
+}
+window.showTaxi=function(k,di,si){
+  var j=JA_DIR[k];if(!j)return;
+  var s=null;try{s=TRIP.days[di].stops[si];}catch(e){}
+  var maps=s?gm(s.q):'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(j.addr);
+  var extra='';try{extra=(function(s){return '<a href="https://go.mo-t.com/" target="_blank" rel="noopener" class="tx-act go">🚕 GO Taxi</a>';})(s,di);}catch(e){}
+  document.getElementById('tx-body').innerHTML=''
+    +'<div class="tx-card">'
+    +'<div class="tx-to">行き先 · DESTINATION</div>'
+    +'<div class="tx-name">'+esc(j.name)+'</div>'
+    +'<div class="tx-name-en">'+esc(j.en)+'</div>'
+    +'<div class="tx-addr">'+esc(j.addr)+'</div>'
+    +'<div class="tx-ask">ここまでお願いします。</div>'
+    +'<div class="tx-ask-en">Please take me here.</div>'
+    +'</div>'
+    +'<div class="tx-acts">'
+    +'<a href="'+maps+'" target="_blank" rel="noopener" class="tx-act pri">📍 Maps</a>'
+    +(j.tel?'<a href="tel:'+j.tel+'" class="tx-act">📞 Call venue</a>':'')
+    +extra
+    +'</div>';
+  document.getElementById('tx-ov').classList.add('on');
+};
+window.closeTaxi=function(){var o=document.getElementById('tx-ov');if(o)o.classList.remove('on');};
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTaxi();});
+
 function renderStop(stop,di,si){
   var isSuggestion=stop.badgeType==='suggestion'||stop.badgeType==='pending';
   var isActionable=stop.badgeType==='confirmed'||stop.badgeType==='logistics'||stop.badgeType==='requested'||stop.badgeType==='self-booked'||stop.badgeType==='walk-in';
@@ -731,9 +806,11 @@ function renderStop(stop,di,si){
   var badge=stop.badge?'<span class="stop-badge '+stop.badgeType+'">'+esc(stop.badge)+'</span>':'';
   var dotClass=isSuggestion?'t-suggestion':('t-'+(stop.type||'restaurant'));
   var cardClass=stop.badgeType==='suggestion'?' is-suggestion':(stop.badgeType==='pending'?' is-pending':'');
+  var tk=taxiKey(stop);
   var mapHTML=hasLoc
     ?'<a href="'+gm(stop.q)+'" target="_blank" rel="noopener" class="map-btn mp">📍 Maps</a>'
       +'<a href="'+nav(stop.q)+'" target="_blank" rel="noopener" class="map-btn">🧭 Nav</a>'
+      +(tk?taxiBtn(tk,di,si):'')
       +'<button class="map-btn" onclick="copyAddr('+di+','+si+')">⎘ Copy</button>'
     :'<span class="map-btn map-disabled">📍</span><span class="map-btn map-disabled">🧭</span><span class="map-btn map-disabled">⎘</span>';
   return '<div class="stop-item">'
