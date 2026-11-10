@@ -24,7 +24,7 @@ and the team directly. To re-encrypt after editing figures, open the site with
 | Date | Time | Booking |
 |---|---|---|
 | Mon 9 Nov | 12:00 | Sushi Meino — private buyout |
-| Wed 11 Nov | 12:00 | Tempura Naruse — private buyout, **in Shizuoka** (~1h each way by Shinkansen) |
+| Wed 11 Nov | 12:30 | Tempura Naruse — private buyout, **in Shizuoka** (~1h each way by Shinkansen) |
 | Fri 13 Nov | early | Toyosu Market — VIP guided visit |
 | Fri 13 Nov | 12:00 | Sushi Saito — Ark Hills South Tower, Roppongi |
 | Sat 14 Nov | 20:30 | Kaiseki Suetomi — food settled on the night, est. ¥100,000 pp |
@@ -39,6 +39,9 @@ need a west-coast overnight); Hikita (pencilled previously, now off the canvas).
 and preferences ahead of the first counter on 9 November.
 
 ## Change log
+
+### 2026-11-10 — Naruse moved to 12:30
+The 11 Nov Naruse seating is 12:30, not 12:00. Corrected here and on the canvas.
 
 ### 2026-10-24 — restaurant write-ups (`pending`)
 Expanded each confirmed restaurant's itinerary note to ~150 words, researched and
